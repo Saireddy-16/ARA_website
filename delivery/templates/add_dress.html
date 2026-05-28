@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Dress page</title>
+    </head>
+    <body>
+        <h1>ADD DRESS</h1>
+        <form method="post" action="{% url 'add' %}">
+            {% csrf_token %}
+            <label for="name">Dress name:</label>
+            <input type="text" name="name" id="name" required>
+            <br>
+            <label for="photo">Photo</label>
+            <input type="url" name="photo" id="photo" required>
+            <br>
+            <label for="rating">Rating:</label>
+            <input type="number" name="rating" id="rating" step=0.1 min="1" max="5" required>
+            <br>
+            <label for="details">Description:</label>
+            <input type="text" name="details" id="details" required>
+            <br>
+            <button type="submit">Add dress</button>
+        </form>
+
+    </body>
+</html>
