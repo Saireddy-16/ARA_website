@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Show dresses</title>
+    </head>
+    <body>
+        <h1>Dresses</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Photo</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dress in dresses %}
+                <tr>
+                    <td>{{ dress.name }}</td>
+                    <td>
+                        <img src="{{ dress.photo }}" alt="{{ dress.name }}" width="100">
+                    </td>
+                    <td>{{ dress.price }}</td>
+                    <td>{{ dress.rating }}</td>
+                    <td>{{ dress.details }}</td>
+                    <td><a href="#">Edit</a> 
+                        <br>
+                        <a href="#">Update price</a>
+                        <br>
+                        <a href="#">Delete</a></td>
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    
+    </body>
+</html>

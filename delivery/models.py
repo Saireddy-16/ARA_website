@@ -11,5 +11,7 @@ class Customer(models.Model):
 class Dress(models.Model):
     name = models.CharField(max_length=20)
     photo = models.URLField(max_length=200)
+    price = models.FloatField()
     rating = models.FloatField()
     details = models.CharField(max_length=300)
+    

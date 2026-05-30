@@ -44,7 +44,7 @@ def signin(request):
                 return render(request,"customer_home.html")
         except Customer.DoesNotExist:
             return render(request,"fail.html")
-def add_dress(request):
+def open_add_dress(request):
     return render(request,"add_dress.html")
 def add(request):
     if request.method=='POST':
@@ -52,10 +52,13 @@ def add(request):
         photo = request.POST.get('photo')
         rating = request.POST.get('rating')
         details = request.POST.get('details')
-    Dress.objects.create(name = name,
+        price = request.POST.get('price')
+        Dress.objects.create(name = name,
                     photo = photo,
                     rating = rating,
-                    details = details)
-    return HttpResponse("succesfully added")
+                    details = details,
+                    price = price)
+        dresses = Dress.objects.all()
+        return render(request,"show_dresses.html",{'dresses':dresses})
 
          
