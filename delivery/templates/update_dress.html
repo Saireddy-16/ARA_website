@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Update dress</title>
+    </head>
+    <body>
+        <h1>Update Dress</h1>
+        <form method="post" action = "{% url 'dress_update' dress.id %}">
+            {% csrf_token %}
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" value="{{ dress.name }}"><br><br>
+            <label for="photo">Photo URL:</label><br>
+            <input type="text" id="photo" name="photo" value="{{ dress.photo }}"><br><br>
+            <label for="price">Price:</label><br>
+            <input type="text" id="price" name="price" value="{{ dress.price }}"><br><br>
+            <label for="rating">Rating:</label><br>
+            <input type="text" id="rating" name="rating" value="{{ dress.rating }}"><br><br>
+            <label for="details">Description:</label><br>
+            <input type="text" id="details" name="details" value="{{ dress.details }}"><br><br>
+            <button type="submit">Update Dress</button>
+        </form> 
+    </body>

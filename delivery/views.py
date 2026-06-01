@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Customer,Dress
+from django.shortcuts import get_object_or_404
+
 # Create your views here.
 
 def index(request):
@@ -60,5 +62,32 @@ def add(request):
                     price = price)
         dresses = Dress.objects.all()
         return render(request,"show_dresses.html",{'dresses':dresses})
+    return HttpResponse("Failed to add dress")
 
-         
+def update_dress(request,dress_id):
+    dress = get_object_or_404(Dress, id=dress_id)
+    return render(request, 'update_dress.html', {'dress': dress})
+
+def dress_update(request, dress_id):
+    dress = get_object_or_404(Dress, id=dress_id)
+    if request.method == 'POST':
+        dress.name = request.POST.get('name')
+        dress.photo = request.POST.get('photo')
+        dress.rating = request.POST.get('rating')
+        dress.details = request.POST.get('details')
+        dress.price = request.POST.get('price')
+        dress.save()
+        dresses = Dress.objects.all()
+        return render(request,"show_dresses.html",{'dresses':dresses})
+    return HttpResponse("Failed to update dress")
+
+def dress_delete(request,dress_id):
+    dress= get_object_or_404(Dress, id = dress_id)
+    dress.delete()
+    dresses = Dress.objects.all()
+    return render(request,"show_dresses.html",{'dresses':dresses})
+
+def display_dresses(request):
+    dresses = Dress.objects.all()
+    return render(request,"display_dresses.html",{'dresses':dresses})
+    

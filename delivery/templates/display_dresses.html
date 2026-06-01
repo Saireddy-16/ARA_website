@@ -14,7 +14,6 @@
                     <th>Price</th>
                     <th>Rating</th>
                     <th>Description</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,17 +26,7 @@
                     <td>{{ dress.price }}</td>
                     <td>{{ dress.rating }}</td>
                     <td>{{ dress.details }}</td>
-                    <td>
-                        <form method="get" action="{% url 'update_dress' dress.id %}" style="display:inline;">
-                            <button type="submit">Update</button>
-                        </form>
-                        <br>
-                        <form method="post" action="{% url 'delete_dress' dress.id %}" style="display:inline;">
-                            {% csrf_token %}
-                            <button type="submit">Delete</button>
-                        </form>
-                        
-                    </td>
+                    
                 {% endfor %}
                 </tr>
             </tbody>
